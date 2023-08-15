@@ -14,28 +14,10 @@ namespace MyAddressBook
         {
             contacts = new List<Contact>();
         }
-
         public void AddContact(Contact contact)
         {
             contacts.Add(contact);
         }
-        public void DeleteContact(string firstName, string lastName)
-        {
-            Contact contactToRemove = contacts.Find(contact =>
-                contact.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase) &&
-                contact.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase));
-
-            if (contactToRemove != null)
-            {
-                contacts.Remove(contactToRemove);
-                Console.WriteLine("Contact deleted.");
-            }
-            else
-            {
-                Console.WriteLine("Contact not found.");
-            }
-        }
-
         public void DisplayContacts()
         {
             Console.WriteLine("Contacts in Address Book:");

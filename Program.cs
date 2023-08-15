@@ -11,50 +11,53 @@ namespace MyAddressBook
 
             AddressBook addressBook = new AddressBook();
 
-            // Add contacts using the code
-            Contact contact1 = new Contact
+            // Use a loop to add multiple contacts
+            while (true)
             {
-                FirstName = "John",
-                LastName = "Doe",
-                Address = "123 Main St",
-                City = "Sample City",
-                State = "Sample State",
-                Zip = "12345",
-                PhoneNumber = "555-1234",
-                Email = "john@example.com"
-            };
-            addressBook.AddContact(contact1);
+                Console.WriteLine("Add a New Contact:");
 
-            Contact contact2 = new Contact
-            {
-                FirstName = "Jane",
-                LastName = "Smith",
-                Address = "456 Elm St",
-                City = "Another City",
-                State = "Another State",
-                Zip = "54321",
-                PhoneNumber = "555-5678",
-                Email = "jane@example.com"
-            };
-            addressBook.AddContact(contact2);
+                Contact newContact = new Contact();
 
-            // Display initial contacts
-            addressBook.DisplayContacts();
+                Console.Write("Enter First Name: ");
+                newContact.FirstName = Console.ReadLine();
 
-            // Delete a contact using the console
-            Console.Write("Enter First Name of Contact to Delete: ");
-            string deleteFirstName = Console.ReadLine();
+                Console.Write("Enter Last Name: ");
+                newContact.LastName = Console.ReadLine();
 
-            Console.Write("Enter Last Name of Contact to Delete: ");
-            string deleteLastName = Console.ReadLine();
+                Console.Write("Enter Address: ");
+                newContact.Address = Console.ReadLine();
 
-            addressBook.DeleteContact(deleteFirstName, deleteLastName);
+                Console.Write("Enter City: ");
+                newContact.City = Console.ReadLine();
 
-            // Display updated contacts after deletion
+                Console.Write("Enter State: ");
+                newContact.State = Console.ReadLine();
+
+                Console.Write("Enter Zip: ");
+                newContact.Zip = Console.ReadLine();
+
+                Console.Write("Enter Phone Number: ");
+                newContact.PhoneNumber = Console.ReadLine();
+
+                Console.Write("Enter Email: ");
+                newContact.Email = Console.ReadLine();
+
+                addressBook.AddContact(newContact);
+
+                Console.Write("Do you want to add another contact? (y/n): ");
+                string continueInput = Console.ReadLine();
+                if (continueInput.ToLower() != "y")
+                {
+                    break;
+                }
+            }
+
+            // Display all contacts
             addressBook.DisplayContacts();
 
             Console.ReadLine();
         }
+
 
     }
 }
