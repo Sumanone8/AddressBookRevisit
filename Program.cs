@@ -1,5 +1,4 @@
-﻿using MyAddressBook;
-using System;
+﻿using System;
 
 namespace MyAddressBook
 {
@@ -9,55 +8,50 @@ namespace MyAddressBook
         {
             Console.WriteLine("Welcome to Address Book Program!");
 
-            AddressBook addressBook = new AddressBook();
+            AddressBookSystem addressBookSystem = new AddressBookSystem();
 
-            // Use a loop to add multiple contacts
             while (true)
             {
-                Console.WriteLine("Add a New Contact:");
+                Console.WriteLine("Choose an option:");
+                Console.WriteLine("1. Add New Address Book");
+                Console.WriteLine("2. Select Address Book");
+                Console.WriteLine("3. Display All Contacts");
+                Console.WriteLine("4. Exit");
 
-                Contact newContact = new Contact();
+                int choice = int.Parse(Console.ReadLine());
 
-                Console.Write("Enter First Name: ");
-                newContact.FirstName = Console.ReadLine();
-
-                Console.Write("Enter Last Name: ");
-                newContact.LastName = Console.ReadLine();
-
-                Console.Write("Enter Address: ");
-                newContact.Address = Console.ReadLine();
-
-                Console.Write("Enter City: ");
-                newContact.City = Console.ReadLine();
-
-                Console.Write("Enter State: ");
-                newContact.State = Console.ReadLine();
-
-                Console.Write("Enter Zip: ");
-                newContact.Zip = Console.ReadLine();
-
-                Console.Write("Enter Phone Number: ");
-                newContact.PhoneNumber = Console.ReadLine();
-
-                Console.Write("Enter Email: ");
-                newContact.Email = Console.ReadLine();
-
-                addressBook.AddContact(newContact);
-
-                Console.Write("Do you want to add another contact? (y/n): ");
-                string continueInput = Console.ReadLine();
-                if (continueInput.ToLower() != "y")
+                switch (choice)
                 {
-                    break;
+                    case 1:
+                        Console.Write("Enter a unique Name for the Address Book: ");
+                        string addressBookName = Console.ReadLine();
+                        addressBookSystem.AddAddressBook(addressBookName);
+                        break;
+                    case 2:
+                        Console.Write("Enter the Name of the Address Book: ");
+                        string selectedAddressBook = Console.ReadLine();
+                        if (addressBookSystem.ContainsAddressBook(selectedAddressBook))
+                        {
+                            addressBookSystem.SelectAddressBook(selectedAddressBook);
+                            addressBookSystem.ManageAddressBook();
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Address Book not found.");
+                        }
+                        break;
+                    case 3:
+                        addressBookSystem.DisplayAllContacts();
+                        break;
+                    case 4:
+                        Console.WriteLine("Exiting...");
+                        return;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
                 }
             }
-
-            // Display all contacts
-            addressBook.DisplayContacts();
-
-            Console.ReadLine();
         }
-
-
     }
 }
