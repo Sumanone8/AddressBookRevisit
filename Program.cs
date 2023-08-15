@@ -12,61 +12,52 @@ namespace MyAddressBook
 
             AddressBook addressBook = new AddressBook();
 
-            // Read contact details from the user
-            Console.Write("Enter First Name: ");
-            string firstName = Console.ReadLine();
-
-            Console.Write("Enter Last Name: ");
-            string lastName = Console.ReadLine();
-
-            Console.Write("Enter Address: ");
-            string address = Console.ReadLine();
-
-            Console.Write("Enter City: ");
-            string city = Console.ReadLine();
-
-            Console.Write("Enter State: ");
-            string state = Console.ReadLine();
-
-            Console.Write("Enter Zip: ");
-            string zip = Console.ReadLine();
-
-            Console.Write("Enter Phone Number: ");
-            string phoneNumber = Console.ReadLine();
-
-            Console.Write("Enter Email: ");
-            string email = Console.ReadLine();
-
-            // Create and add a new contact if input is valid
-            if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) &&
-                !string.IsNullOrEmpty(address) && !string.IsNullOrEmpty(city) &&
-                !string.IsNullOrEmpty(state) && !string.IsNullOrEmpty(zip) &&
-                !string.IsNullOrEmpty(phoneNumber) && !string.IsNullOrEmpty(email))
+            // Add contacts using the code
+            Contact contact1 = new Contact
             {
-                Contact newContact = new Contact
-                {
-                    FirstName = firstName,
-                    LastName = lastName,
-                    Address = address,
-                    City = city,
-                    State = state,
-                    Zip = zip,
-                    PhoneNumber = phoneNumber,
-                    Email = email
-                };
+                FirstName = "John",
+                LastName = "Doe",
+                Address = "123 Main St",
+                City = "Sample City",
+                State = "Sample State",
+                Zip = "12345",
+                PhoneNumber = "555-1234",
+                Email = "john@example.com"
+            };
+            addressBook.AddContact(contact1);
 
-                addressBook.AddContact(newContact);
-
-                // Display the added contact
-                addressBook.DisplayContacts();
-            }
-            else
+            Contact contact2 = new Contact
             {
-                Console.WriteLine("Invalid input. Contact not added.");
-            }
+                FirstName = "Jane",
+                LastName = "Smith",
+                Address = "456 Elm St",
+                City = "Another City",
+                State = "Another State",
+                Zip = "54321",
+                PhoneNumber = "555-5678",
+                Email = "jane@example.com"
+            };
+            addressBook.AddContact(contact2);
+
+            // Display initial contacts
+            // addressBook.DisplayContacts();
+
+            // Edit contact's name using the console
+            Console.Write("Enter First Name of Contact to Edit: ");
+            string editFirstName = Console.ReadLine();
+
+            Console.Write("Enter Last Name of Contact to Edit: ");
+            string editLastName = Console.ReadLine();
+
+            addressBook.EditContactName(editFirstName, editLastName);
+
+            // Display the edited contact
+            addressBook.DisplayEditedContact(editFirstName, editLastName);
 
             Console.ReadLine();
         }
+
+
     }
 }
 
