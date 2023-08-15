@@ -1,8 +1,8 @@
-﻿using AddressBookRevisit;
+﻿using MyAddressBook;
 using System;
 using System.Collections.Generic;
 
-namespace AddressBook
+namespace MyAddressBook
 {
     class Program
     {

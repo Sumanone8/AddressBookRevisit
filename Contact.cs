@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AddressBookRevisit
-    {
+namespace MyAddressBook
+{
     class Contact
         {
                     public string FirstName { get; set; }
