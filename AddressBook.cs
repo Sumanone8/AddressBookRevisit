@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyAddressBook
 {
@@ -14,10 +12,20 @@ namespace MyAddressBook
         {
             contacts = new List<Contact>();
         }
-        public void AddContact(Contact contact)
+
+        public bool AddContact(Contact contact)
         {
+            if (contacts.Any(c => c.Equals(contact)))
+            {
+                Console.WriteLine("Contact with the same name already exists.");
+                return false;
+            }
+
             contacts.Add(contact);
+            Console.WriteLine("Contact added successfully!");
+            return true;
         }
+
         public void DisplayContacts()
         {
             Console.WriteLine("Contacts in Address Book:");
@@ -33,6 +41,7 @@ namespace MyAddressBook
                 Console.WriteLine();
             }
         }
+
         public void ManageContacts()
         {
             while (true)
@@ -79,7 +88,6 @@ namespace MyAddressBook
 
                         AddContact(newContact);
 
-                        Console.WriteLine("Contact added successfully!");
                         break;
 
                     case 2:
@@ -179,6 +187,5 @@ namespace MyAddressBook
                 Console.WriteLine("Contact not found.");
             }
         }
-
     }
 }
