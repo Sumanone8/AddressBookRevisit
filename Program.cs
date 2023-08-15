@@ -1,6 +1,5 @@
 ﻿using MyAddressBook;
 using System;
-using System.Collections.Generic;
 
 namespace MyAddressBook
 {
@@ -40,24 +39,22 @@ namespace MyAddressBook
             addressBook.AddContact(contact2);
 
             // Display initial contacts
-            // addressBook.DisplayContacts();
+            addressBook.DisplayContacts();
 
-            // Edit contact's name using the console
-            Console.Write("Enter First Name of Contact to Edit: ");
-            string editFirstName = Console.ReadLine();
+            // Delete a contact using the console
+            Console.Write("Enter First Name of Contact to Delete: ");
+            string deleteFirstName = Console.ReadLine();
 
-            Console.Write("Enter Last Name of Contact to Edit: ");
-            string editLastName = Console.ReadLine();
+            Console.Write("Enter Last Name of Contact to Delete: ");
+            string deleteLastName = Console.ReadLine();
 
-            addressBook.EditContactName(editFirstName, editLastName);
+            addressBook.DeleteContact(deleteFirstName, deleteLastName);
 
-            // Display the edited contact
-            addressBook.DisplayEditedContact(editFirstName, editLastName);
+            // Display updated contacts after deletion
+            addressBook.DisplayContacts();
 
             Console.ReadLine();
         }
 
-
     }
 }
-

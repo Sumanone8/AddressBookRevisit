@@ -19,26 +19,16 @@ namespace MyAddressBook
         {
             contacts.Add(contact);
         }
-        public void EditContactName(string firstName, string lastName)
+        public void DeleteContact(string firstName, string lastName)
         {
-            Contact existingContact = contacts.Find(contact =>
+            Contact contactToRemove = contacts.Find(contact =>
                 contact.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase) &&
                 contact.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase));
 
-            if (existingContact != null)
+            if (contactToRemove != null)
             {
-                Console.WriteLine("Editing contact name:");
-                Console.WriteLine($"Current Name: {existingContact.FirstName} {existingContact.LastName}");
-
-                // Update contact's first name using console input
-                Console.Write("Enter Updated First Name: ");
-                existingContact.FirstName = Console.ReadLine();
-
-                // Update contact's last name using console input
-                Console.Write("Enter Updated Last Name: ");
-                existingContact.LastName = Console.ReadLine();
-
-                Console.WriteLine("Contact name updated.");
+                contacts.Remove(contactToRemove);
+                Console.WriteLine("Contact deleted.");
             }
             else
             {
@@ -46,28 +36,23 @@ namespace MyAddressBook
             }
         }
 
-        public void DisplayEditedContact(string firstName, string lastName)
+        public void DisplayContacts()
         {
-            Contact editedContact = contacts.Find(contact =>
-                contact.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase) &&
-                contact.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase));
-
-            if (editedContact != null)
+            Console.WriteLine("Contacts in Address Book:");
+            foreach (Contact contact in contacts)
             {
-                Console.WriteLine("Edited Contact:");
-                Console.WriteLine($"Name: {editedContact.FirstName} {editedContact.LastName}");
-                Console.WriteLine($"Address: {editedContact.Address}");
-                Console.WriteLine($"City: {editedContact.City}");
-                Console.WriteLine($"State: {editedContact.State}");
-                Console.WriteLine($"Zip: {editedContact.Zip}");
-                Console.WriteLine($"Phone Number: {editedContact.PhoneNumber}");
-                Console.WriteLine($"Email: {editedContact.Email}");
-            }
-            else
-            {
-                Console.WriteLine("Edited contact not found.");
+                Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+                Console.WriteLine($"Address: {contact.Address}");
+                Console.WriteLine($"City: {contact.City}");
+                Console.WriteLine($"State: {contact.State}");
+                Console.WriteLine($"Zip: {contact.Zip}");
+                Console.WriteLine($"Phone Number: {contact.PhoneNumber}");
+                Console.WriteLine($"Email: {contact.Email}");
+                Console.WriteLine();
             }
         }
+
+
 
     }
 }
